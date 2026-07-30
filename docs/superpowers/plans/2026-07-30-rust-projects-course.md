@@ -63,7 +63,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #8 Especificar requests, routing, respuestas y límites del servidor HTTP.
 - [ ] #9 Implementar y probar servidor HTTP educativo.
-- [ ] #10 Escribir capítulo, diagrama, ejemplos y ejercicios del servidor HTTP.
+- [x] #10 Escribir capítulo, diagrama, ejemplos y ejercicios del servidor HTTP.
 
 ### Load balancer
 
