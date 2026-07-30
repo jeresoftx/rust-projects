@@ -91,7 +91,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 ### Docker
 
-- [ ] #23 Especificar imagen, ejecución conceptual, aislamiento y límites de Docker educativo.
+- [x] #23 Especificar imagen, ejecución conceptual, aislamiento y límites de Docker educativo.
 - [ ] #24 Implementar y probar Docker educativo.
 - [ ] #25 Escribir capítulo, diagrama, ejemplos y ejercicios de Docker.
 
