@@ -5,5 +5,6 @@ herramienta de línea de comandos hasta un log distribuido. La dirección no es
 una carrera: cada proyecto solo avanza cuando su alcance, pruebas y límites son
 claros (RFC-0001 §1 y §2).
 
-La siguiente acción es convertir el plan versionado en GitHub Project,
-milestones e issues antes de tocar código de los proyectos.
+El [GitHub Project #21](https://github.com/users/jeresoftx/projects/21) ya
+contiene milestones, issues, dependencias y campos operativos. El siguiente
+bloque ejecutable es `#1 → #2 → #3 → #4`: coordinación y `grep`.

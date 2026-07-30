@@ -21,6 +21,8 @@ proyectos integradores (RFC-0001 §10 y §14).
 
 El alcance y el orden de trabajo viven en el
 [plan versionado](docs/superpowers/plans/2026-07-30-rust-projects-course.md).
+La ejecución operativa vive en el
+[GitHub Project #21](https://github.com/users/jeresoftx/projects/21).
 
 ## Estados Editoriales
 
