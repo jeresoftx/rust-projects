@@ -67,7 +67,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 ### Load balancer
 
-- [ ] #11 Especificar backends, health checks, round-robin y límites.
+- [x] #11 Especificar backends, health checks, round-robin y límites.
 - [ ] #12 Implementar y probar load balancer educativo.
 - [ ] #13 Escribir capítulo, diagrama, ejemplos y ejercicios del load balancer.
 
