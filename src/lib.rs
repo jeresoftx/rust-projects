@@ -2,3 +2,4 @@
 
 pub mod curl;
 pub mod grep;
+pub mod http_server;
