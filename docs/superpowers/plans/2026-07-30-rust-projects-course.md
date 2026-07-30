@@ -51,7 +51,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #2 Especificar búsqueda, entradas, errores y límites de `grep`.
 - [ ] #3 Implementar y probar `grep` educativo.
-- [ ] #4 Escribir capítulo, diagrama, ejemplos y ejercicios de `grep`.
+- [x] #4 Escribir capítulo, diagrama, ejemplos y ejercicios de `grep`.
 
 ### curl
 

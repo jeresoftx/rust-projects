@@ -45,3 +45,62 @@ texto UTF-8 para que el núcleo quede visible y pueda probarse sin dependencias.
 No hay expresiones regulares, búsqueda recursiva, colores, contexto de líneas,
 lectura desde entrada estándar ni soporte binario. El modelo carga el archivo
 completo y no pretende reemplazar a `grep` de producción.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[Consulta] --> B{¿Vacía?}
+    B -- Sí --> E[Diagnóstico]
+    B -- No --> C[Leer líneas UTF-8]
+    C --> D{¿La línea contiene la consulta?}
+    D -- Sí --> F[Conservar número y texto]
+    D -- No --> G[Siguiente línea]
+    F --> G
+    G --> H[Salida ordenada]
+```
+
+## Ejemplos progresivos
+
+La API separa la comparación del acceso a archivos para que sus pruebas no
+dependan del sistema operativo:
+
+```rust
+use rust_projects::grep::{search, SearchOptions};
+
+let matches = search("Rust", "Rust\nGo\nRustacean", SearchOptions {
+    ignore_case: false,
+})?;
+assert_eq!(matches[0].line_number, 1);
+# Ok::<(), String>(())
+```
+
+Para una comparación que no distinga mayúsculas, la salida conserva el texto
+original. Solo se normaliza el predicado:
+
+```rust
+# use rust_projects::grep::{search, SearchOptions};
+let matches = search("rust", "Rust\nrust", SearchOptions {
+    ignore_case: true,
+})?;
+assert_eq!(matches.len(), 2);
+# Ok::<(), String>(())
+```
+
+## Ejercicios
+
+1. Agrega una opción que invierta el predicado y conserva la numeración
+   original de las líneas.
+2. Diseña una función de frontera que lea un archivo y traduzca el error de
+   UTF-8 a un diagnóstico para la terminal.
+3. Explica por qué una expresión regular no debe incorporarse sin redefinir
+   el contrato de errores y escapes.
+
+## Soluciones orientativas
+
+1. Elige el predicado una sola vez, antes del recorrido; no reordenes ni
+   reconstruyas las coincidencias.
+2. Mantén la lectura fuera de `search`: así los casos de búsqueda se prueban
+   con texto en memoria y el diagnóstico de E/S se prueba por separado.
+3. Las expresiones regulares introducen un lenguaje nuevo. Sus patrones
+   inválidos son errores de compilación del patrón, no búsquedas sin resultados.
