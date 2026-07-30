@@ -33,3 +33,44 @@ parsing, resolución y serialización sin prometer HTTP completo.
 No hay cuerpos, keep-alive, HTTP/2, rutas con parámetros, TLS, concurrencia ni
 protección contra solicitudes lentas. La implementación es un núcleo probado,
 no un servidor de internet.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[Bytes TCP] --> B[Parsear línea inicial]
+    B --> C{Request válida}
+    C -- No --> D[400]
+    C -- Sí --> E{Ruta y método}
+    E -- Coinciden --> F[200 + cuerpo]
+    E -- Ruta existe --> G[405]
+    E -- Ruta ausente --> H[404]
+```
+
+## Ejemplos progresivos
+
+```rust
+use rust_projects::http_server::{Request, Router};
+
+let router = Router::new().route("GET", "/salud", "ok");
+let response = router.handle(Request { method: "GET".into(), path: "/salud".into() });
+assert_eq!(response.status, 200);
+```
+
+El router no abre sockets: esa separación permite explicar y probar su
+semántica antes de introducir concurrencia o tiempos de espera.
+
+## Ejercicios
+
+1. Agrega una respuesta `400` para una versión HTTP desconocida.
+2. Propón cómo modelar encabezados sin permitir repetición ambigua.
+3. Explica dónde introducirías un límite de tamaño de request para no asignar
+   memoria sin límite.
+
+## Soluciones orientativas
+
+1. La decisión ocurre durante `parse_request`, antes del router.
+2. Usa una colección ordenada si importa preservar orden; define explícitamente
+   si una clave duplicada es error o una lista de valores.
+3. El límite pertenece a la lectura desde la conexión, antes de entregar bytes
+   al parser; el modelo actual deja esa frontera fuera de alcance.
