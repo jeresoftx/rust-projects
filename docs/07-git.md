@@ -23,3 +23,34 @@ inmutabilidad, snapshots y referencias sin alegar compatibilidad binaria.
 
 No hay filesystem, SHA real, árboles anidados, merge, remoto, hooks, firma ni
 garbage collection. El modelo ilustra el grafo de historia, no reemplaza Git.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[Contenido] --> B[Índice]
+    B --> C[Snapshot de commit]
+    C --> D[Referencia main]
+    B --> E[Nuevo staging]
+    E --> F[Nuevo commit]
+    F --> D
+```
+
+## Ejemplo
+
+```rust
+use rust_projects::git::Repository;
+
+let mut repo = Repository::default();
+repo.stage("README.md", "v1");
+let commit = repo.commit("main");
+assert_eq!(repo.snapshot(commit).unwrap()["README.md"], "v1");
+```
+
+## Ejercicios y soluciones orientativas
+
+1. Añade una rama. Solución: una rama es otra referencia mutable al mismo id.
+2. Modela un árbol. Solución: transforma rutas en una estructura jerárquica,
+   manteniendo objetos inmutables.
+3. Diseña merge. Solución: define una base común y una política explícita para
+   conflictos antes de crear un commit resultante.

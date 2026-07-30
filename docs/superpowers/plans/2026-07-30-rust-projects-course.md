@@ -87,7 +87,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #20 Especificar objetos, índice, referencias y límites de Git educativo.
 - [ ] #21 Implementar y probar Git educativo.
-- [ ] #22 Escribir capítulo, diagrama, ejemplos y ejercicios de Git.
+- [x] #22 Escribir capítulo, diagrama, ejemplos y ejercicios de Git.
 
 ### Docker
 
