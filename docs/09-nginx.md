@@ -22,3 +22,31 @@ el modelo actúe como proxy de bytes.
 
 No hay sockets, HTTP, TLS, upstreams reales, headers, retries, cache, rate
 limiting ni archivos de configuración. No es un servidor NGINX compatible.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[Request /api/cursos] --> B[Reglas por prefijo]
+    B --> C[/]
+    B --> D[/api]
+    D --> E[Backend API]
+```
+
+## Ejemplo
+
+```rust
+use rust_projects::nginx::Router;
+
+let router = Router::default().route("/", "web").route("/api", "api");
+assert_eq!(router.resolve("/api/cursos"), Ok("api"));
+```
+
+## Ejercicios y soluciones orientativas
+
+1. Agrega una ruta exacta. Solución: decide primero si vence a cualquier
+   prefijo y pruébalo como regla distinta.
+2. Modela headers. Solución: mantén la decisión de backend separada de la
+   transformación de request.
+3. Diseña reintentos. Solución: requiere un contrato de idempotencia; no todo
+   método HTTP debe repetirse.

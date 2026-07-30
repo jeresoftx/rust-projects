@@ -99,7 +99,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #26 Especificar proxy inverso, routing y límites de NGINX educativo.
 - [ ] #27 Implementar y probar NGINX educativo.
-- [ ] #28 Escribir capítulo, diagrama, ejemplos y ejercicios de NGINX.
+- [x] #28 Escribir capítulo, diagrama, ejemplos y ejercicios de NGINX.
 
 ### Kafka y cierre
 
