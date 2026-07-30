@@ -45,7 +45,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 ### Fundación
 
-- [ ] #1 Coordinar plan, Project y trazabilidad de `rust-projects`.
+- [x] #1 Coordinar plan, Project y trazabilidad de `rust-projects`.
 
 ### grep
 
