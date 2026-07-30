@@ -5,3 +5,4 @@ pub mod grep;
 pub mod http_server;
 pub mod load_balancer;
 pub mod redis;
+pub mod sqlite;
