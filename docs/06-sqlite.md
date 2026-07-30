@@ -25,3 +25,36 @@ identidad y consulta sin afirmar durabilidad que el modelo no ofrece.
 No hay archivos, SQL parser, transacciones, índices secundarios, tipos
 dinámicos, concurrencia, recuperación ni árbol B. Es una base para razonar
 sobre almacenamiento, no SQLite compatible.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[INSERT fila] --> B{¿id duplicado?}
+    B -- Sí --> C[Error]
+    B -- No --> D[Insertar y ordenar]
+    E[SELECT id] --> F{¿Fila existe?}
+    F -- Sí --> G[Una fila]
+    F -- No --> H[Cero filas]
+```
+
+## Ejemplo
+
+```rust
+use rust_projects::sqlite::{Row, Table};
+
+let mut table = Table::new(2);
+table.insert(Row { id: 2, text: "dos".into() })?;
+table.insert(Row { id: 1, text: "uno".into() })?;
+assert_eq!(table.scan_page(0)[0].id, 1);
+# Ok::<(), String>(())
+```
+
+## Ejercicios y soluciones orientativas
+
+1. Añade una segunda página. Solución: conserva el cálculo de frontera
+   `página * capacidad` y prueba páginas vacías y parciales.
+2. Propón un índice. Solución: define primero cómo se sincroniza con la tabla
+   al insertar; un índice desactualizado es corrupción lógica.
+3. Diseña transacciones. Solución: declara una unidad de cambio y una política
+   de fallo antes de introducir un journal.
