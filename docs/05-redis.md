@@ -29,3 +29,35 @@ expiración sin convertir este curso en una reimplementación de producción.
 
 No hay red, RESP, persistencia, pub/sub, transacciones, listas, sets,
 evicción de memoria ni concurrencia. La expiración es perezosa y didáctica.
+
+## Recorrido
+
+```mermaid
+flowchart LR
+    A[GET clave] --> B{¿Existe?}
+    B -- No --> C[Nil]
+    B -- Sí --> D{¿Venció según reloj?}
+    D -- Sí --> E[Eliminar y Nil]
+    D -- No --> F[Devolver valor]
+```
+
+## Ejemplo
+
+```rust
+use rust_projects::redis::Store;
+
+let mut store = Store::default();
+store.set("curso", "Rust");
+assert!(store.expire("curso", 10));
+assert_eq!(store.get("curso", 9), Some("Rust".into()));
+assert_eq!(store.get("curso", 10), None);
+```
+
+## Ejercicios y soluciones orientativas
+
+1. Añade `TTL`. Solución: distingue clave ausente de clave sin vencimiento y
+   calcula la diferencia sin modificar estado.
+2. Diseña persistencia. Solución: primero define un formato y su manejo ante
+   corrupción; no serialices el mapa sin un contrato de recuperación.
+3. Agrega concurrencia. Solución: protege mapa y reloj como fronteras distintas
+   y prueba que `GET` y expiración siguen siendo atómicos para cada clave.
