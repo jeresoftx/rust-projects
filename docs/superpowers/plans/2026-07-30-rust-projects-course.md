@@ -105,7 +105,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #29 Especificar log, particiones, consumidores y límites de Kafka educativo.
 - [ ] #30 Implementar y probar Kafka educativo.
-- [ ] #31 Escribir capítulo, diagrama, ejemplos y ejercicios de Kafka.
+- [x] #31 Escribir capítulo, diagrama, ejemplos y ejercicios de Kafka.
 - [ ] #32 Completar ruta de lectura, glosario y auditoría editorial en `draft`.
 
 ## Criterio de cierre
