@@ -61,7 +61,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 ### Servidor HTTP
 
-- [ ] #8 Especificar requests, routing, respuestas y límites del servidor HTTP.
+- [x] #8 Especificar requests, routing, respuestas y límites del servidor HTTP.
 - [ ] #9 Implementar y probar servidor HTTP educativo.
 - [ ] #10 Escribir capítulo, diagrama, ejemplos y ejercicios del servidor HTTP.
 
