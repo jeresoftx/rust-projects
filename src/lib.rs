@@ -1,6 +1,7 @@
 //! Modelos educativos para construir sistemas reales en Rust.
 
 pub mod curl;
+pub mod docker;
 pub mod git;
 pub mod grep;
 pub mod http_server;
