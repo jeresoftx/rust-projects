@@ -28,3 +28,9 @@ La ejecución operativa vive en el
 
 Todo el contenido comienza en `draft`. No se marcará como `reviewed` ni
 `published` sin revisión humana.
+
+## Ruta De Lectura
+
+Sigue el índice en orden: `grep`, `curl`, servidor HTTP, balanceador, Redis,
+SQLite, Git, Docker, NGINX y Kafka. Cada unidad conserva especificación,
+modelo probado y capítulo; el glosario reúne términos reutilizados.
