@@ -57,7 +57,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #5 Especificar cliente HTTP, URLs, respuestas y límites de `curl`.
 - [ ] #6 Implementar y probar `curl` educativo.
-- [ ] #7 Escribir capítulo, diagrama, ejemplos y ejercicios de `curl`.
+- [x] #7 Escribir capítulo, diagrama, ejemplos y ejercicios de `curl`.
 
 ### Servidor HTTP
 

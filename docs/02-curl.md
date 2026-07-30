@@ -34,3 +34,52 @@ redirects o un runtime asíncrono.
 No hay HTTPS, redirects, autenticación, proxies, `chunked`, compresión,
 cookies, pooling ni timeouts configurables. Este cliente sirve para aprender el
 camino de bytes y no para salir a internet con garantías de producción.
+
+## Recorrido
+
+```mermaid
+sequenceDiagram
+    participant C as Cliente
+    participant S as Servidor TCP
+    C->>C: Validar URL HTTP
+    C->>S: GET ruta + Host + Connection: close
+    S-->>C: Línea de estado y encabezados
+    S-->>C: Cuerpo hasta cerrar conexión
+    C->>C: Validar y representar respuesta
+```
+
+## Ejemplos progresivos
+
+Primero se valida y descompone la URL:
+
+```rust
+use rust_projects::curl::parse_http_url;
+
+let url = parse_http_url("http://example.test:8080/salud")?;
+assert_eq!(url.port, 8080);
+# Ok::<(), String>(())
+```
+
+Luego se puede observar exactamente qué bytes saldrían por TCP:
+
+```rust
+# use rust_projects::curl::{build_get_request, parse_http_url};
+let request = build_get_request(&parse_http_url("http://example.test/")?);
+assert!(String::from_utf8(request)?.starts_with("GET / HTTP/1.1"));
+# Ok::<(), Box<dyn std::error::Error>>(())
+```
+
+## Ejercicios
+
+1. Añade soporte para una ruta vacía sin aceptar un host vacío.
+2. Modela un límite máximo de encabezados y explica el error que produciría.
+3. Explica por qué `Transfer-Encoding: chunked` requiere otro parser, no solo
+   una nueva cabecera en la respuesta actual.
+
+## Soluciones orientativas
+
+1. Normaliza la ruta a `/` durante el parsing de URL, antes de serializar.
+2. Cuenta encabezados mientras se parsean y rechaza entradas excesivas antes
+   de reservar o procesar trabajo adicional.
+3. El cuerpo actual termina al cerrar conexión; los chunks llevan su propio
+   framing y deben validarse antes de reconstruir el cuerpo.
