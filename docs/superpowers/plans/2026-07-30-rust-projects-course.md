@@ -81,7 +81,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #17 Especificar páginas, tabla mínima, consultas y límites de SQLite educativo.
 - [ ] #18 Implementar y probar SQLite educativo.
-- [ ] #19 Escribir capítulo, diagrama, ejemplos y ejercicios de SQLite.
+- [x] #19 Escribir capítulo, diagrama, ejemplos y ejercicios de SQLite.
 
 ### Git
 
