@@ -1,0 +1,10 @@
+[package]
+name = "rust-projects"
+version = "0.1.0"
+edition = "2021"
+description = "Modelos educativos de sistemas reales en Rust."
+license = "MIT"
+
+[lib]
+name = "rust_projects"
+path = "src/lib.rs"
