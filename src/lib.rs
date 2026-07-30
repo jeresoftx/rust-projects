@@ -6,5 +6,6 @@ pub mod git;
 pub mod grep;
 pub mod http_server;
 pub mod load_balancer;
+pub mod nginx;
 pub mod redis;
 pub mod sqlite;
