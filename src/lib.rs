@@ -5,6 +5,7 @@ pub mod docker;
 pub mod git;
 pub mod grep;
 pub mod http_server;
+pub mod kafka;
 pub mod load_balancer;
 pub mod nginx;
 pub mod redis;
