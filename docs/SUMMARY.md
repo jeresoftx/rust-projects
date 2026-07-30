@@ -12,3 +12,4 @@ El índice se poblará cuando cada proyecto tenga un capítulo en `draft`.
 - [SQLite educativo: páginas, tabla y consultas](06-sqlite.md)
 - [Git educativo: objetos, índice y referencias](07-git.md)
 - [Docker educativo: imágenes y ejecución conceptual](08-docker.md)
+- [NGINX educativo: proxy inverso y routing](09-nginx.md)
