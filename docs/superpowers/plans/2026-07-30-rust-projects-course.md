@@ -75,7 +75,7 @@ acotadas, después servicios y estado, y finalmente el log distribuido.
 
 - [x] #14 Especificar protocolo, claves, expiración y límites de Redis educativo.
 - [ ] #15 Implementar y probar Redis educativo.
-- [ ] #16 Escribir capítulo, diagrama, ejemplos y ejercicios de Redis.
+- [x] #16 Escribir capítulo, diagrama, ejemplos y ejercicios de Redis.
 
 ### SQLite
 
