@@ -14,3 +14,4 @@ El índice se poblará cuando cada proyecto tenga un capítulo en `draft`.
 - [Docker educativo: imágenes y ejecución conceptual](08-docker.md)
 - [NGINX educativo: proxy inverso y routing](09-nginx.md)
 - [Kafka educativo: log, particiones y consumidores](10-kafka.md)
+- [Glosario](GLOSSARY.md)
